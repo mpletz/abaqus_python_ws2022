@@ -1,0 +1,1 @@
+abaqus cae script=first_script.py
