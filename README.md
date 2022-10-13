@@ -1,0 +1,1 @@
+# abaqus_python_ws2022
