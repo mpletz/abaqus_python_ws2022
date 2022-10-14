@@ -13,3 +13,5 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 * Recap of unit 1
 * Exercise: Create sketch with wavy surface (`sin`-function in a spline using `NumPy` functions.
 * Introduction to handling  `vertices`, `edges`, `faces`, and `cells` using Python. How to make sets or surfaces out of them.
+
+![Sketch of the first exercise: Plate with wavy surface.](images/draw-spline.png)
