@@ -5,6 +5,7 @@ from abaqus import *
 from abaqusConstants import *
 from caeModules import *
 import os, shutil
+import numpy as np
 
 DIR0 = os.path.abspath('')
 TOL = 1e-4
@@ -190,9 +191,32 @@ def make_loads(model,inst,inst2,uy,fy,max_inc,job_name,if_plastic,if_force=0):
     job.waitForCompletion()
     return
 
+def eval_fu_curve(odb_name):
+    # open the odb with the odb_name
+    odb = session.openOdb(name=odb_name+'.odb')
+
+    u_list = []
+    rf_list = []
+
+    for i_step,step in enumerate(odb.steps.values()):
+        hr = step.historyRegions.values()[1]
+        rf_temp = np.array(hr.historyOutputs['RF2'].data)[:,1]
+        u_temp = np.array(hr.historyOutputs['U2'].data)[:,1]
+        if i_step == 0:
+            rf_list += list(rf_temp)
+            u_list += list(u_temp)
+        else:
+            rf_list += list(rf_temp[1:])
+            u_list += list(u_temp[1:])
+
+    print(u_list,rf_list)
+    np.savetxt(odb_name+'-res.dat', np.column_stack((u_list,rf_list)), header='U2 (mm), RF2 (N)',
+               delimiter=', ')
+    return
+
 def make_hardness_model(dir_name,r_tip,ang_tip,(b,h,b0,h0),(size_fine,size_coarse),
                         mu,uy,fy,max_inc,if_plastic=1,if_force=0):
-    # complete model creation in one fuunction
+    # complete model creation in one function
     if if_plastic:
         job_name = 'indenter-pl'
     else:
@@ -208,6 +232,7 @@ def make_hardness_model(dir_name,r_tip,ang_tip,(b,h,b0,h0),(size_fine,size_coars
     #
     make_loads(model,inst,inst2,uy,fy,max_inc,job_name,if_plastic,if_force)
     #
+    eval_fu_curve(job_name)
     os.chdir(DIR0)
     return
 
