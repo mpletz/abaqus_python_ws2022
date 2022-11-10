@@ -27,3 +27,7 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 * _Scripts that run the model and wait for completion crash if run in an interactive way (i.e., when started using "Run Script" or script=... in the command line)_
 
 ![Sketch of the indentation model we used in unit 4.](images/indenter-model3.png)
+
+### Unit 5
+* We revisited the evaluation of the history output from the last unit
+* We looked into how to automatically generate images out of Abaqus models (png, svg). There was an error in my code because I deleted `from caeModules import *` because the viewer module is a cae module.

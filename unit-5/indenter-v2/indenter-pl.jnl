@@ -1,0 +1,114 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='indenter', sheetSize=200.0)
+mdb.models['Model-1'].sketches['indenter'].ArcByCenterEnds(center=(0, 0.1), 
+    direction=COUNTERCLOCKWISE, point1=(0, 0), point2=(0.0707106781186548, 
+    0.0292893218813452))
+mdb.models['Model-1'].sketches['indenter'].Line(point1=(0.0707106781186548, 
+    0.0292893218813452), point2=(0.5, 0.458578643762691))
+mdb.models['Model-1'].sketches['indenter'].ConstructionLine(point1=(0, 0), 
+    point2=(0, 1))
+mdb.models['Model-1'].Part(dimensionality=AXISYMMETRIC, name='Indenter', type=
+    DISCRETE_RIGID_SURFACE)
+mdb.models['Model-1'].parts['Indenter'].BaseWire(sketch=
+    mdb.models['Model-1'].sketches['indenter'])
+mdb.models['Model-1'].parts['Indenter'].ReferencePoint(point=(0, 0.1, 0))
+mdb.models['Model-1'].parts['Indenter'].Set(name='rp', referencePoints=(
+    mdb.models['Model-1'].parts['Indenter'].referencePoints[2], ))
+mdb.models['Model-1'].parts['Indenter'].Surface(name='contact', side2Edges=
+    mdb.models['Model-1'].parts['Indenter'].edges)
+mdb.models['Model-1'].parts['Indenter'].seedPart(size=0.007)
+mdb.models['Model-1'].parts['Indenter'].generateMesh()
+mdb.models['Model-1'].ConstrainedSketch(name='specimen', sheetSize=200.0)
+mdb.models['Model-1'].sketches['specimen'].ConstructionLine(point1=(0, 0), 
+    point2=(0, 1))
+mdb.models['Model-1'].sketches['specimen'].rectangle(point1=(0, -0.5), point2=(
+    1, 0))
+mdb.models['Model-1'].Part(dimensionality=AXISYMMETRIC, name='Specimen', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Specimen'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['specimen'])
+mdb.models['Model-1'].ConstrainedSketch(name='partition', sheetSize=200.0)
+mdb.models['Model-1'].sketches['partition'].rectangle(point1=(0, -0.15), 
+    point2=(0.3, 0))
+mdb.models['Model-1'].parts['Specimen'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['Specimen'].faces, sketch=
+    mdb.models['Model-1'].sketches['partition'])
+mdb.models['Model-1'].parts['Specimen'].seedPart(size=0.05)
+mdb.models['Model-1'].parts['Specimen'].seedEdgeBySize(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Specimen'].edges.findAt(((0.3, -0.1125, 0.0), 
+    ), ((0.075, -0.15, 0.0), ), ((0.075, 0.0, 0.0), ), ((0.0, -0.1125, 0.0), ), 
+    ), size=0.007)
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].Set(faces=
+    mdb.models['Model-1'].parts['Specimen'].faces, name='all')
+mdb.models['Model-1'].parts['Specimen'].Set(edges=
+    mdb.models['Model-1'].parts['Specimen'].edges.findAt(((0.0, -0.4125, 0.0), 
+    ), ((0.0, -0.1125, 0.0), ), ), name='xsym')
+mdb.models['Model-1'].parts['Specimen'].Set(edges=
+    mdb.models['Model-1'].parts['Specimen'].edges.findAt(((0.75, -0.5, 0.0), ), 
+    ), name='ysym')
+mdb.models['Model-1'].parts['Specimen'].Surface(name='contact', side1Edges=
+    mdb.models['Model-1'].parts['Specimen'].edges.findAt(((0.075, 0.0, 0.0), ), 
+    ))
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Indenter', 
+    part=mdb.models['Model-1'].parts['Indenter'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Specimen', 
+    part=mdb.models['Model-1'].parts['Specimen'])
+mdb.models['Model-1'].Material(name='PET')
+mdb.models['Model-1'].materials['PET'].Elastic(table=((3000, 0.35), ))
+mdb.models['Model-1'].materials['PET'].Plastic(table=((30.0, 0.0), (630.0, 
+    1.0)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='PET', name='PET', 
+    thickness=None)
+mdb.models['Model-1'].parts['Specimen'].SectionAssignment(region=
+    mdb.models['Model-1'].parts['Specimen'].sets['all'], sectionName='PET', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].ContactProperty('int-prop')
+mdb.models['Model-1'].interactionProperties['int-prop'].TangentialBehavior(
+    formulation=PENALTY, fraction=0.005, maximumElasticSlip=FRACTION, 
+    shearStressLimit=None, table=((0.3, ), ))
+mdb.models['Model-1'].interactionProperties['int-prop'].NormalBehavior(
+    allowSeparation=ON, clearanceAtZeroContactPressure=0.0, 
+    constraintEnforcementMethod=AUGMENTED_LAGRANGE, contactStiffness=DEFAULT, 
+    contactStiffnessScaleFactor=1.0, pressureOverclosure=HARD)
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(createStepName='Initial', 
+    interactionProperty='int-prop', master=
+    mdb.models['Model-1'].rootAssembly.instances['Indenter'].surfaces['contact']
+    , name='contact', slave=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen'].surfaces['contact']
+    , sliding=FINITE)
+mdb.models['Model-1'].DisplacementBC(createStepName='Initial', name='xsym', 
+    region=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen'].sets['xsym'], u1=
+    0)
+mdb.models['Model-1'].DisplacementBC(createStepName='Initial', name='ysym', 
+    region=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen'].sets['ysym'], u2=
+    0)
+mdb.models['Model-1'].StaticStep(initialInc=0.1, maxInc=0.1, maxNumInc=1000, 
+    minInc=1e-08, name='load-u', nlgeom=ON, previous='Initial')
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='load-u', name=
+    'H-Output-RP', region=
+    mdb.models['Model-1'].rootAssembly.instances['Indenter'].sets['rp'], 
+    variables=('U2', 'RF2', 'CF2'))
+mdb.models['Model-1'].DisplacementBC(createStepName='load-u', name='uy', 
+    region=mdb.models['Model-1'].rootAssembly.instances['Indenter'].sets['rp'], 
+    u1=0, u2=-0.1, ur3=0)
+mdb.models['Model-1'].StaticStep(initialInc=0.1, maxInc=0.1, maxNumInc=1000, 
+    minInc=1e-08, name='unload', nlgeom=ON, previous='load-u')
+mdb.models['Model-1'].boundaryConditions['uy'].setValuesInStep(stepName=
+    'unload', u2=0.0)
+# Save by p1340760 on 2022_11_10-14.30.15; build 2020 2019_09_13-19.49.31 163176
