@@ -39,6 +39,6 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 * Start with scripting on a simple model: Geometry, Sections, ...
 
 ### Simple FEM model to script
-A cantilever beam that is loaded by its own weight (plane stress).
+A cantilever beam that is loaded by its own weight (plane stress) with linear elastic material law. The width $b$ is 120 mm and the height $h$ is 40 mm.
 
 ![](images/cantilever_beam.jpeg)
