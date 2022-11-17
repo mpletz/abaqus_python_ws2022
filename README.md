@@ -35,7 +35,7 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 ## Unit 6, 2022-11-17
 * Short look into printing images from last unit
 * Discussion of modeling and how to select a problem and work on your projects
-  * Possible problems: Pasta that deforms during cooking, Tipping of things in the supermarket conveyor, Spokes of a bicycle wheel, Transmitting forces with the hair of a toothbrush, Biting on a nut: Plastic deformation first, then fracture, Opening a shampoo bottle: M(phi): Why?
+  * Possible problems: Pasta that deforms during cooking, Tipping of things in the supermarket conveyor, Spokes of a bicycle wheel, Transmitting forces with the hair of a toothbrush, Biting on a nut: Plastic deformation first, then fracture, Opening a shampoo bottle: M(phi): Why?, Bicycle crank stress depending on angle and geometry.
 * Start with scripting on a simple model: Geometry, Sections, ...
 
 ### Simple FEM model to script
