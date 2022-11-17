@@ -16,11 +16,11 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 
 ![Sketch of the first exercise: Plate with wavy surface.](images/draw-spline.png)
 
-### Unit 3, 2022-20-20
+### Unit 3, 2022-10-20
 * We looked into how to select entities in Abaqus and create sets out of that.
 * findAt, getByBoundingBox, properties of entity (size, etc.)
 
-### Unit 4, 2022-20-27
+### Unit 4, 2022-10-27
 * You guys can start thinking about what example to use (it should be simple, easy to test, and have nothing to do with your research field) 
 * MP brought a working indenter model without evaluation functions
 * We looked into how to load the odb and write the history output into a dat file.
@@ -28,6 +28,17 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 
 ![Sketch of the indentation model we used in unit 4.](images/indenter-model3.png)
 
-### Unit 5
+### Unit 5, 2022-11-10
 * We revisited the evaluation of the history output from the last unit
 * We looked into how to automatically generate images out of Abaqus models (png, svg). There was an error in my code because I deleted `from caeModules import *` because the viewer module is a cae module.
+
+## Unit 6, 2022-11-17
+* Short look into printing images from last unit
+* Discussion of modeling and how to select a problem and work on your projects
+  * Possible problems: Pasta that deforms during cooking, Tipping of things in the supermarket conveyor, Spokes of a bicycle wheel, Transmitting forces with the hair of a toothbrush, Biting on a nut: Plastic deformation first, then fracture, Opening a shampoo bottle: M(phi): Why?
+* Start with scripting on a simple model: Geometry, Sections, ...
+
+### Simple FEM model to script
+A cantilever beam that is loaded by its own weight (plane stress).
+
+![](images/cantilever_beam.jpeg)
