@@ -39,6 +39,8 @@ Scripts and ressources for the [Abaqus/Python](https://online.unileoben.ac.at/mu
 * Start with scripting on a simple model: Geometry, Sections, ...
 
 ### Simple FEM model to script
-A cantilever beam that is loaded by its own weight (plane stress) with linear elastic material law. The width $b$ is 120 mm and the height $h$ is 40 mm.
+A cantilever beam that is loaded by its own weight (plane stress) with linear elastic material law. The width $b$ is 120 mm and the height $h$ is 40 mm. Write the vertical displacement of the top right point into a history output, because we want to play with that, later.
+
+To check if the splines are ok to build a valid 2D geometry, print an image of the skecth once it is created. This will hel with debugging a lot! The gravity load can be created with the `Create Predefined Field` button.
 
 ![](images/cantilever_beam.jpeg)
