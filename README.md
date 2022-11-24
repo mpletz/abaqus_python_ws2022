@@ -47,4 +47,4 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
 
 ### Unit 7, 2022-11-24
 * Continue to work on the cantilever beam that is loaded by its own weight
-* The splines for the geometry can also be created using an [Android App](https://play.google.com/store/apps/details?id=mul.kkv.FEMon2) (documented [here](https://www.kunststofftechnik.at/fileadmin/shares/kunststofftechnik/lehrstuhl/Konstruieren_in_Kunst-_und_Verbundstoffen/Docs/FEMon.pdf) in German). If you there save the geoemtry that you recognized from a drawing as a .json-file, you can use the function and code lines from the script `get_cantilever_beam.py` in the folder 'unit-7'. 
+* The splines for the geometry can also be created using an [Android App](https://play.google.com/store/apps/details?id=mul.kkv.FEMon2) (documented [here](https://www.kunststofftechnik.at/fileadmin/shares/kunststofftechnik/lehrstuhl/Konstruieren_in_Kunst-_und_Verbundstoffen/Docs/FEMon.pdf) in German). If you there save the geoemtry that you recognized from a drawing as a .json-file, you can use the function and code lines from the script `get_cantilever_splines.py` in the folder 'unit-7'. 
