@@ -47,4 +47,15 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
 
 ### Unit 7, 2022-11-24
 * Continue to work on the cantilever beam that is loaded by its own weight
-* The splines for the geometry can also be created using an [Android App](https://play.google.com/store/apps/details?id=mul.kkv.FEMon2) (documented [here](https://www.kunststofftechnik.at/fileadmin/shares/kunststofftechnik/lehrstuhl/Konstruieren_in_Kunst-_und_Verbundstoffen/Docs/FEMon.pdf) in German). If you there save the geoemtry that you recognized from a drawing as a .json-file, you can use the function and code lines from the script `get_cantilever_splines.py` in the folder 'unit-7'. 
+* The splines for the geometry can also be created using an [Android App](https://play.google.com/store/apps/details?id=mul.kkv.FEMon2) (documented [here](https://www.kunststofftechnik.at/fileadmin/shares/kunststofftechnik/lehrstuhl/Konstruieren_in_Kunst-_und_Verbundstoffen/Docs/FEMon.pdf) in German). If you there save the geoemtry that you recognized from a drawing as a .json-file, you can use the function and code lines from the script `get_cantilever_splines.py` in the folder 'unit-7'.
+
+### Unit 8, 2022-12-01
+* Looked into the [section](www.martinpletz.com/fe-scripting-6) about tidying up the code. There, we saw how to run Abaqus models in subfolders with specific names and delete unwanted calcultation files.
+* Continued working on example from unit 6: The deadline to finish isthat until christmas (please send it per e-mail to Martin).
+* Discussed your ideas for the project examples (you should also decide that until christmas):
+  * Wolfgang: Gummibears (maximum size until plastic deformation under its own weight) & plasticity, paraview
+  * Martin K.: not decided 
+  * Benjamin: Steel plate stove
+  * Julia: Inner pressure: Failure of soda can or PET bottle
+  * Martin T.: not decided
+  * Philip: Pressing a filled soda can until failure (including tests)
