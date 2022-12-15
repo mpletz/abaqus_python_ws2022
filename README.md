@@ -54,8 +54,14 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
 * Continued working on example from unit 6: The deadline to finish isthat until christmas (please send it per e-mail to Martin).
 * Discussed your ideas for the project examples (you should also decide that until christmas):
   * Wolfgang: Gummibears (maximum size until plastic deformation under its own weight) & plasticity, paraview
-  * Martin K.: not decided 
+  * Martin K.: Barbell falling on ground (or being lifted): Fracture or plastic deformation? 
   * Benjamin: Steel plate stove
   * Julia: Inner pressure: Failure of soda can or PET bottle
   * Martin T.: not decided
   * Philip: Pressing a filled soda can until failure (including tests)
+
+### Unit 9, 2022-12-15
+* Repeated stuff on tidying the code
+* Question by Martin K.: how to run Abaqus/Python file from Python? This can be done with the command `subprocess.call('abaqus cae',shell=True)` which for example opens a cmd window.
+* Continued working on the example from unit #6. The output shoul contain an image of the deformed cantilever (possibly with a deformation scale factor > 1 to better see the deformation) and a text file for each calculation containing the end point displacement.
+* Plan for the January units #10 and #11: _Open Lab_ for working on code and performing experiments. Martin P. will bring spring scales, recording equipment, and other stuff for the experiments.
