@@ -65,3 +65,7 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
 * Question by Martin K.: how to run Abaqus/Python file from Python? This can be done with the command `subprocess.call('abaqus cae',shell=True)` which for example opens a cmd window.
 * Continued working on the example from unit #6. The output shoul contain an image of the deformed cantilever (possibly with a deformation scale factor > 1 to better see the deformation) and a text file for each calculation containing the end point displacement.
 * Plan for the January units #10 and #11: _Open Lab_ for working on code and performing experiments. Martin P. will bring spring scales, recording equipment, and other stuff for the experiments.
+
+### Unit 10, 2023-01-12
+* Free unit for working on projects
+* I recommend working like that: Draw model sketch: does it make sense? yes --> CAE Model, manually built: does it work and give meaningful results? yes --> Script the model
