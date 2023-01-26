@@ -57,7 +57,7 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
   * Martin K.: Barbell falling on ground (or being lifted): Fracture or plastic deformation? 
   * Benjamin: Steel plate stove
   * Julia: Inner pressure: Failure of soda can or PET bottle
-  * Martin T.: not decided
+  * Martin T.: Morphing pasta (soaking and corresponding deformation of pasta)
   * Philip: Pressing a filled soda can until failure (including tests)
 
 ### Unit 9, 2022-12-15
@@ -69,3 +69,11 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
 ### Unit 10, 2023-01-12
 * Free unit for working on projects
 * I recommend working like that: Draw model sketch: does it make sense? yes --> CAE Model, manually built: does it work and give meaningful results? yes --> Script the model
+
+### Unit 11, 2023-01-19
+* Another free unit for working on your projects
+
+### Unit 12, 2023-01-26
+* The last unit before the presentations
+* Martin K. found the Python Package [pyabaqus 2022](https://pypi.org/project/pyabaqus/) that can help you write Abaqus/Python code in your editor (code completion, docstrings, telling you if some commands are not defined).
+* 
