@@ -59,6 +59,7 @@ To check if the splines are ok to build a valid 2D geometry, print an image of t
   * Julia: Inner pressure: Failure of soda can or PET bottle
   * Martin T.: Morphing pasta (soaking and corresponding deformation of pasta)
   * Philip: Pressing a filled soda can until failure (including tests)
+  * Chongnan: Pulling noodle dough until it fails
 
 ### Unit 9, 2022-12-15
 * Repeated stuff on tidying the code
